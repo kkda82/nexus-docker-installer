@@ -6,8 +6,9 @@ echo "📦 Nexus CLI Docker 환경 자동 설치 시작..."
 sudo apt update
 sudo apt install -y docker.io docker-compose git
 
-# nexus-docker 디렉토리로 이동
-cd nexus-docker
+# nexus-docker-installer 전체 클론
+git clone https://github.com/kkda82/nexus-docker-installer.git
+cd nexus-docker-installer/nexus-docker
 
 # 사용자 홈 디렉토리 자동 설정
 USER_NAME=$(whoami)
