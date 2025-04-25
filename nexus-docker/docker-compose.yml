@@ -6,6 +6,6 @@ services:
       - TZ=Asia/Seoul
     volumes:
       - /home/ubuntu/.nexus:/root/.nexus
-    network_mode: "none"
+    network_mode: none
     tty: true
     stdin_open: true
