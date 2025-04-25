@@ -1,12 +1,20 @@
 #!/bin/bash
 
-echo "[+] Nexus CLI 컨테이너 빌드 및 실행..."
-docker-compose up -d --build
+echo "📦 Nexus CLI Docker 환경 시작..."
 
-sleep 5
+# Docker 실행 확인
+if ! docker info > /dev/null 2>&1; then
+  echo "❌ Docker 데몬이 실행 중이 아닙니다."
+  exit 1
+fi
 
-echo "[+] Nexus CLI 설치 중..."
-docker exec -it nexus-node bash -c "curl https://cli.nexus.xyz/ | sh"
+# 최신 이미지 pull
+echo "[+] Docker Hub에서 Nexus 이미지 가져오는 중..."
+docker pull kkda82/nexus-prebuilt:latest
 
-echo "[+] Nexus CLI 진입!"
-docker exec -it nexus-node bash
+# 컨테이너 실행
+echo "[+] Nexus CLI 컨테이너 실행..."
+docker-compose up -d
+
+# 컨테이너 로그 출력
+docker logs -f nexus-node
