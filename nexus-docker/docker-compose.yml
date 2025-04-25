@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  nexus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nexus-node
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ${HOME_DIR}/.nexus:/root/.nexus
+    tty: true
+    stdin_open: true
