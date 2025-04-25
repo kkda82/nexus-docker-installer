@@ -1,13 +1,11 @@
 services:
   nexus:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: kkda82/nexus-prebuilt:latest
     container_name: nexus-node
     environment:
-      - TZ=${TZ}
+      - TZ=Asia/Seoul
     volumes:
-      - ${HOME_DIR}/.nexus:/root/.nexus
-    network_mode: "none"   # ✅ 추가
+      - /home/ubuntu/.nexus:/root/.nexus
+    network_mode: "none"
     tty: true
     stdin_open: true
