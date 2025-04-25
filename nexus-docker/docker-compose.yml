@@ -2,10 +2,10 @@ services:
   nexus:
     image: kkda82/nexus-prebuilt:latest
     container_name: nexus-node
-    environment:
-      - TZ=Asia/Seoul
+    network_mode: "none"
     volumes:
       - /home/ubuntu/.nexus:/root/.nexus
-    network_mode: none
+    environment:
+      - TZ=Asia/Seoul
     tty: true
     stdin_open: true
